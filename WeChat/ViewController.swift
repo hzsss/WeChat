@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         textField.delegate = self
         
-    NotificationCenter.default.addObserver(self,selector:#selector(keyboardWillChange(_:)),name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self,selector:#selector(keyboardWillChange(_:)),name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
