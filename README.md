@@ -1,3 +1,3 @@
 # WeChat
-使用可视化界面搭建
-Storyboard
+使用可视化(Storyboard)界面搭建
+
