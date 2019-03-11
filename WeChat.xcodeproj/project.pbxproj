@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1DC07322360996002CA272 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1DC07122360996002CA272 /* ChatCell.swift */; };
+		3E1DC07422360996002CA272 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1DC07222360996002CA272 /* ChatCell.xib */; };
 		3E6AC2C4223262E0001DD450 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AC2C3223262E0001DD450 /* UserMessage.swift */; };
 		3EB45E5A22324E4D001F9224 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E5922324E4D001F9224 /* AppDelegate.swift */; };
 		3EB45E5C22324E4D001F9224 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E5B22324E4D001F9224 /* ViewController.swift */; };
@@ -39,6 +41,8 @@
 		03C2DAD5C94DAA8127F1EDC0 /* Pods-WeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.debug.xcconfig"; path = "Target Support Files/Pods-WeChat/Pods-WeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		07B1C47BCAA183BEF6F853BD /* Pods_WeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A1BABD4DC25FB4F0576B18C /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
+		3E1DC07122360996002CA272 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		3E1DC07222360996002CA272 /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		3E6AC2C3223262E0001DD450 /* UserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
 		3EB45E5622324E4D001F9224 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB45E5922324E4D001F9224 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3E1DC0692236027B002CA272 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E1DC07122360996002CA272 /* ChatCell.swift */,
+				3E1DC07222360996002CA272 /* ChatCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E1DC06A22360285002CA272 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3EB45E5B22324E4D001F9224 /* ViewController.swift */,
+				3EB45E5D22324E4D001F9224 /* Main.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3E6AC2C2223262BF001DD450 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,10 +144,10 @@
 		3EB45E5822324E4D001F9224 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				3E1DC06A22360285002CA272 /* Controller */,
+				3E1DC0692236027B002CA272 /* View */,
 				3E6AC2C2223262BF001DD450 /* Model */,
 				3EB45E5922324E4D001F9224 /* AppDelegate.swift */,
-				3EB45E5B22324E4D001F9224 /* ViewController.swift */,
-				3EB45E5D22324E4D001F9224 /* Main.storyboard */,
 				3EB45E6022324E4E001F9224 /* Assets.xcassets */,
 				3EB45E6222324E4E001F9224 /* LaunchScreen.storyboard */,
 				3EB45E6522324E4E001F9224 /* Info.plist */,
@@ -267,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EB45E6422324E4E001F9224 /* LaunchScreen.storyboard in Resources */,
+				3E1DC07422360996002CA272 /* ChatCell.xib in Resources */,
 				3EB45E6122324E4E001F9224 /* Assets.xcassets in Resources */,
 				3EB45E5F22324E4D001F9224 /* Main.storyboard in Resources */,
 			);
@@ -345,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E6AC2C4223262E0001DD450 /* UserMessage.swift in Sources */,
+				3E1DC07322360996002CA272 /* ChatCell.swift in Sources */,
 				3EB45E5C22324E4D001F9224 /* ViewController.swift in Sources */,
 				3EB45E5A22324E4D001F9224 /* AppDelegate.swift in Sources */,
 			);

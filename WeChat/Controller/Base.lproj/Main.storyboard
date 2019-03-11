@@ -93,6 +93,7 @@
                     <navigationItem key="navigationItem" title="热心市民黄先生" id="EWG-w1-rdj"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="dfj-Cj-Hge" id="Lqf-if-EcW"/>
+                        <outlet property="tableView" destination="Xha-in-mu0" id="0dl-00-Bks"/>
                         <outlet property="textField" destination="w7w-xs-H4v" id="fwc-oW-qIC"/>
                     </connections>
                 </viewController>

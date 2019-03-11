@@ -8,15 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    var userMessages: [UserMessage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         textField.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        tableView.tableFooterView = UIView(frame: .zero)
+        
+        userMessages = UserMessage().findMessage()
         
         NotificationCenter.default.addObserver(self,selector:#selector(keyboardWillChange(_:)),name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
@@ -54,11 +63,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let userMessage = UserMessage(name: "Acan", text: textField.text)
+        let userMessage = UserMessage()
+        userMessage.name = "Acan"
+        userMessage.text = textField.text
         userMessage.insertMessage(userMessage)
+        userMessages = userMessage.findMessage()
+        
         print("identifier: \(userMessage.lastInsertedRowID))")
+        
+        tableView.reloadData()
         textField.resignFirstResponder()
         return true
+    }
+    
+    // UITablViewDelegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userMessages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+        cell.userMessage = userMessages[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

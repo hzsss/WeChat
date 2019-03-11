@@ -33,10 +33,7 @@ class UserMessage: TableCodable {
     var isAutoIncrement: Bool = true
     var lastInsertedRowID: Int64 = 0
     
-    init(name: String?, text: String?) {
-        self.name = name
-        self.text = text
-        
+    init() {
         do {
             try database.create(table: "userMessage", of: UserMessage.self)
         } catch  {
@@ -64,7 +61,13 @@ class UserMessage: TableCodable {
         
     }
     
-    func findMessage(_ userMessage: UserMessage) {
-
+    func findMessage() -> [UserMessage] {
+        do {
+            let allObjects: [UserMessage] = try database.getObjects(fromTable: "userMessage")
+            return allObjects
+        } catch {
+            print("查找错误")
+            return []
+        }
     }
 }
