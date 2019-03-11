@@ -27,10 +27,10 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Td8-DK-gAa">
-                        <rect key="frame" x="254" y="78" width="30" height="20"/>
+                        <rect key="frame" x="237.5" y="78" width="46.5" height="40.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXn-uq-8xe">
-                                <rect key="frame" x="25" y="10" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXn-uq-8xe">
+                                <rect key="frame" x="5" y="10" width="36.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                         <color key="backgroundColor" red="0.61626385711642451" green="1" blue="0.94612053494456916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EXn-uq-8xe" firstAttribute="centerY" secondItem="Td8-DK-gAa" secondAttribute="centerY" id="3pg-AM-8Ze"/>
-                            <constraint firstAttribute="width" secondItem="EXn-uq-8xe" secondAttribute="width" constant="30" id="RUy-4v-w89"/>
+                            <constraint firstItem="EXn-uq-8xe" firstAttribute="width" secondItem="Td8-DK-gAa" secondAttribute="width" constant="-10" id="8N8-pc-3TD"/>
                             <constraint firstAttribute="height" secondItem="EXn-uq-8xe" secondAttribute="height" constant="20" id="h76-KP-Wvq"/>
                             <constraint firstAttribute="trailing" secondItem="EXn-uq-8xe" secondAttribute="trailing" constant="5" id="pns-dl-egb"/>
                         </constraints>
@@ -51,6 +51,7 @@
                     <constraint firstAttribute="trailing" secondItem="YTG-Tg-CWp" secondAttribute="trailing" constant="10" id="UQV-xz-3m9"/>
                     <constraint firstItem="YTG-Tg-CWp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eXt-qP-4AR"/>
                     <constraint firstItem="Td8-DK-gAa" firstAttribute="top" secondItem="YTG-Tg-CWp" secondAttribute="top" id="sOI-WQ-3W1"/>
+                    <constraint firstItem="Td8-DK-gAa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="70" id="t81-my-3sL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
