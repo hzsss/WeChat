@@ -51,5 +51,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textField.endEditing(true)
     }
+    
+    // UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let userMessage = UserMessage(name: "Acan", text: textField.text)
+        userMessage.insertMessage(userMessage)
+        print("identifier: \(userMessage.lastInsertedRowID))")
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

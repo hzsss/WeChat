@@ -56,7 +56,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,12 +73,20 @@
                                     <constraint firstItem="w7w-xs-H4v" firstAttribute="centerY" secondItem="fH6-aP-cWc" secondAttribute="centerY" id="tg2-h7-XEv"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xha-in-mu0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Xha-in-mu0" firstAttribute="leading" secondItem="OB8-v7-ekr" secondAttribute="leading" id="1oC-Fi-Xso"/>
+                            <constraint firstItem="Xha-in-mu0" firstAttribute="top" secondItem="OB8-v7-ekr" secondAttribute="top" id="2dC-Vl-Fhq"/>
                             <constraint firstItem="fH6-aP-cWc" firstAttribute="leading" secondItem="OB8-v7-ekr" secondAttribute="leading" id="J8X-fk-33l"/>
                             <constraint firstItem="fH6-aP-cWc" firstAttribute="bottom" secondItem="OB8-v7-ekr" secondAttribute="bottom" id="dfj-Cj-Hge"/>
                             <constraint firstItem="OB8-v7-ekr" firstAttribute="trailing" secondItem="fH6-aP-cWc" secondAttribute="trailing" id="roK-bH-tKQ"/>
+                            <constraint firstItem="fH6-aP-cWc" firstAttribute="top" secondItem="Xha-in-mu0" secondAttribute="bottom" id="v0Z-Ei-VWs"/>
+                            <constraint firstItem="OB8-v7-ekr" firstAttribute="trailing" secondItem="Xha-in-mu0" secondAttribute="trailing" id="xsr-4D-Pas"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OB8-v7-ekr"/>
                     </view>

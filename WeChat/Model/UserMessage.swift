@@ -10,21 +10,35 @@ import UIKit
 import WCDBSwift
 
 class UserMessage: TableCodable {
-    var database: Database = Database(withPath: "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!) + /userMessage.db")
+    var database: Database = Database(withPath: "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!)/userMessage.db")
     
     var identifier: Int?
-    var message: String?
+    var name: String?
+    var text: String?
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = UserMessage
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case identifier
-        case message
+        case name
+        case text
+        
+        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
+            return [
+                identifier: ColumnConstraintBinding(isPrimary: true)
+            ]
+        }
     }
     
-    init() {
+    var isAutoIncrement: Bool = true
+    var lastInsertedRowID: Int64 = 0
+    
+    init(name: String?, text: String?) {
+        self.name = name
+        self.text = text
+        
         do {
-            try database.create(table: "userMessageTable", of: UserMessage.self)
+            try database.create(table: "userMessage", of: UserMessage.self)
         } catch  {
             print("创建失败")
         }
@@ -32,7 +46,7 @@ class UserMessage: TableCodable {
     
     func insertMessage(_ userMessage: UserMessage) {
         do {
-            try database.insert(objects: userMessage, intoTable: "userMessageTable")
+            try database.insert(objects: userMessage, intoTable: "userMessage")
         } catch {
             print("插入失败")
         }
@@ -40,7 +54,7 @@ class UserMessage: TableCodable {
     
     func deleteMessage(_ userMessage: UserMessage) {
         do {
-            try database.delete(fromTable: "userMessageTable", where: UserMessage.Properties.identifier == userMessage.identifier!)
+            try database.delete(fromTable: "userMessage", where: UserMessage.Properties.identifier == userMessage.identifier!)
         } catch {
             print("删除失败")
         }
