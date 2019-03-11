@@ -1,5 +1,5 @@
 //
-//  ChatCell.swift
+//  TalkCell.swift
 //  WeChat
 //
 //  Created by weiphone on 2019/3/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatCell: UITableViewCell {
+class TalkCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     
     var userMessage: UserMessage? {
@@ -16,10 +16,10 @@ class ChatCell: UITableViewCell {
             messageLabel.text = userMessage?.text
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
     
 }

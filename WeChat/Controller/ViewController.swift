@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        tableView.register(UINib.init(nibName: "TalkCell", bundle: nil), forCellReuseIdentifier: "TalkCell")
         tableView.tableFooterView = UIView(frame: .zero)
         
         userMessages = UserMessage().findMessage()
@@ -78,9 +79,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-        cell.userMessage = userMessages[indexPath.row]
-        return cell
+        if userMessages[indexPath.row].name == "Acan" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+            cell.userMessage = userMessages[indexPath.row]
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TalkCell") as! TalkCell
+            cell.userMessage = userMessages[indexPath.row]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,5 +97,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    @IBAction func sendOtherMessage(_ sender: Any) {
+        let userMessage = UserMessage()
+        userMessage.name = "Linder"
+        userMessage.text = "你好！!"
+        userMessage.insertMessage(userMessage)
+        userMessages = userMessage.findMessage()
+        
+        print("identifier: \(userMessage.lastInsertedRowID))")
+        
+        tableView.reloadData()
+    }
+    
 }
 

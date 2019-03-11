@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E1DC07322360996002CA272 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1DC07122360996002CA272 /* ChatCell.swift */; };
 		3E1DC07422360996002CA272 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1DC07222360996002CA272 /* ChatCell.xib */; };
+		3E1DC07722365970002CA272 /* TalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1DC07522365970002CA272 /* TalkCell.swift */; };
+		3E1DC07822365970002CA272 /* TalkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1DC07622365970002CA272 /* TalkCell.xib */; };
 		3E6AC2C4223262E0001DD450 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6AC2C3223262E0001DD450 /* UserMessage.swift */; };
 		3EB45E5A22324E4D001F9224 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E5922324E4D001F9224 /* AppDelegate.swift */; };
 		3EB45E5C22324E4D001F9224 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E5B22324E4D001F9224 /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 		2A1BABD4DC25FB4F0576B18C /* Pods-WeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat.release.xcconfig"; path = "Target Support Files/Pods-WeChat/Pods-WeChat.release.xcconfig"; sourceTree = "<group>"; };
 		3E1DC07122360996002CA272 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		3E1DC07222360996002CA272 /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		3E1DC07522365970002CA272 /* TalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell.swift; sourceTree = "<group>"; };
+		3E1DC07622365970002CA272 /* TalkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell.xib; sourceTree = "<group>"; };
 		3E6AC2C3223262E0001DD450 /* UserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
 		3EB45E5622324E4D001F9224 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB45E5922324E4D001F9224 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				3E1DC07122360996002CA272 /* ChatCell.swift */,
 				3E1DC07222360996002CA272 /* ChatCell.xib */,
+				3E1DC07522365970002CA272 /* TalkCell.swift */,
+				3E1DC07622365970002CA272 /* TalkCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 			files = (
 				3EB45E6422324E4E001F9224 /* LaunchScreen.storyboard in Resources */,
 				3E1DC07422360996002CA272 /* ChatCell.xib in Resources */,
+				3E1DC07822365970002CA272 /* TalkCell.xib in Resources */,
 				3EB45E6122324E4E001F9224 /* Assets.xcassets in Resources */,
 				3EB45E5F22324E4D001F9224 /* Main.storyboard in Resources */,
 			);
@@ -371,6 +378,7 @@
 				3E1DC07322360996002CA272 /* ChatCell.swift in Sources */,
 				3EB45E5C22324E4D001F9224 /* ViewController.swift in Sources */,
 				3EB45E5A22324E4D001F9224 /* AppDelegate.swift in Sources */,
+				3E1DC07722365970002CA272 /* TalkCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

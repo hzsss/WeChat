@@ -90,7 +90,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OB8-v7-ekr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="热心市民黄先生" id="EWG-w1-rdj"/>
+                    <navigationItem key="navigationItem" title="热心市民黄先生" id="EWG-w1-rdj">
+                        <barButtonItem key="leftBarButtonItem" title="小林" id="xfy-Vt-WEg">
+                            <connections>
+                                <action selector="sendOtherMessage:" destination="vR0-AZ-gxY" id="3G8-rH-lLJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="dfj-Cj-Hge" id="Lqf-if-EcW"/>
                         <outlet property="tableView" destination="Xha-in-mu0" id="0dl-00-Bks"/>
