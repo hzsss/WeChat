@@ -11,6 +11,8 @@ import UIKit
 class ChatCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var bgView: UIView!
+    
     var userMessage: UserMessage? {
         didSet {
             messageLabel.text = userMessage?.text
@@ -20,6 +22,8 @@ class ChatCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        bgView.layer.cornerRadius = 3.0
+        bgView.layer.masksToBounds = true
     }
     
 }

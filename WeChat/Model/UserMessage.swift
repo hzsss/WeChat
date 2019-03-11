@@ -49,9 +49,10 @@ class UserMessage: TableCodable {
         }
     }
     
-    func deleteMessage(_ userMessage: UserMessage) {
+    func deleteMessage() {
         do {
-            try database.delete(fromTable: "userMessage", where: UserMessage.Properties.identifier == userMessage.identifier!)
+//            try database.delete(fromTable: "userMessage", where: UserMessage.Properties.identifier == userMessage.identifier!)
+            try database.delete(fromTable: "userMessage")
         } catch {
             print("删除失败")
         }

@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="65c-6l-Xft" secondAttribute="width" constant="10" id="dEo-gR-O8x"/>
                             <constraint firstAttribute="height" secondItem="65c-6l-Xft" secondAttribute="height" constant="20" id="dfP-1k-Idc"/>
@@ -45,6 +45,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="DWw-ru-fCA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2lD-ln-Wkb"/>
                     <constraint firstItem="UCc-4E-ya7" firstAttribute="leading" secondItem="DWw-ru-fCA" secondAttribute="trailing" constant="5" id="Dyo-s7-zQi"/>
@@ -56,6 +57,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="UCc-4E-ya7" id="v1L-KR-Gcj"/>
                 <outlet property="messageLabel" destination="65c-6l-Xft" id="P5X-Pc-xFa"/>
             </connections>
             <point key="canvasLocation" x="164.80000000000001" y="195.20239880059972"/>

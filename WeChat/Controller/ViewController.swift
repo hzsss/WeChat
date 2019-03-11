@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 0)
         tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         tableView.register(UINib.init(nibName: "TalkCell", bundle: nil), forCellReuseIdentifier: "TalkCell")
         tableView.tableFooterView = UIView(frame: .zero)
@@ -60,16 +61,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     // UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text, text.count > 0 else { return false }
         let userMessage = UserMessage()
         userMessage.name = "Acan"
         userMessage.text = textField.text
         userMessage.insertMessage(userMessage)
         userMessages = userMessage.findMessage()
-        
-        print("identifier: \(userMessage.lastInsertedRowID))")
-        
         tableView.reloadData()
-        textField.resignFirstResponder()
         return true
     }
     
@@ -82,20 +80,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         if userMessages[indexPath.row].name == "Acan" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
             cell.userMessage = userMessages[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TalkCell") as! TalkCell
             cell.userMessage = userMessages[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        textField.endEditing(true)
     }
     
     @IBAction func sendOtherMessage(_ sender: Any) {
@@ -110,5 +110,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.reloadData()
     }
     
+    @IBAction func deleteAllMessage(_ sender: Any) {
+        let userMessage = UserMessage()
+        userMessage.deleteMessage()
+        userMessages = userMessage.findMessage()
+        tableView.reloadData()
+    }
 }
 
