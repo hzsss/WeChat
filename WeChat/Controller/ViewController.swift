@@ -19,19 +19,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        configTableView()
+        
         textField.delegate = self
+        userMessages = UserMessage().findMessage()
+        
+        NotificationCenter.default.addObserver(self,selector:#selector(keyboardWillChange(_:)),name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    func configTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 0)
+        tableView.backgroundColor = UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 0)
         tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         tableView.register(UINib.init(nibName: "TalkCell", bundle: nil), forCellReuseIdentifier: "TalkCell")
         tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
         tableView.tableFooterView = UIView(frame: .zero)
-        
-        userMessages = UserMessage().findMessage()
-        
-        NotificationCenter.default.addObserver(self,selector:#selector(keyboardWillChange(_:)),name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -70,6 +74,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         userMessage.insertMessage(userMessage)
         userMessages = userMessage.findMessage()
         tableView.reloadData()
+        textField.text = nil
+        resetTableViewContentOffset()
         return true
     }
     
@@ -115,6 +121,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         print("identifier: \(userMessage.lastInsertedRowID))")
         
         tableView.reloadData()
+        resetTableViewContentOffset()
     }
     
     @IBAction func deleteAllMessage(_ sender: Any) {
@@ -141,11 +148,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             userMessage.insertMessage(userMessage)
             self.userMessages = userMessage.findMessage()
             self.tableView.reloadData()
+            self.resetTableViewContentOffset()
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func resetTableViewContentOffset() {
+        tableView.contentOffset.y = tableView.contentSize.height - tableView.bounds.height
     }
 }
 
