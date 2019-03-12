@@ -9,16 +9,15 @@
 import UIKit
 
 class ImageCell: UITableViewCell {
-
     @IBOutlet weak var imageMessageView: UIImageView!
-    @IBOutlet weak var iconView: UIImageView!
     
-    var aspect: CGFloat = 0
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     var userMessage: UserMessage? {
         didSet {
             if let imageData = userMessage?.imageData, let image = UIImage(data: imageData) {
-                aspect = image.size.height / image.size.width
+                let aspect = image.size.height / image.size.width
                 imageMessageView.image = image
+                heightConstraint.constant = aspect * 200
                 layoutIfNeeded()
             }
         }
@@ -28,12 +27,5 @@ class ImageCell: UITableViewCell {
         // Initialization code
         imageMessageView.layer.cornerRadius = 3.0
         imageMessageView.layer.masksToBounds = true
-        
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let imageSize = CGSize(width: 200, height: 200 * aspect)
-        imageMessageView.frame = CGRect(x: iconView.frame.minX - imageSize.width - 10, y: iconView.frame.minY, width: imageSize.width, height: imageSize.height)
     }
 }

@@ -131,6 +131,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         imageVc.delegate = self
         self.present(imageVc, animated: true, completion: nil)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true) {
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
@@ -142,6 +143,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             self.tableView.reloadData()
         }
     }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
