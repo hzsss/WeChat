@@ -39,6 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     @objc func keyboardWillChange(_ notification: Notification) {
         if let userInfo = notification.userInfo,
             let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -54,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                     test = 0
                 }
                 self.bottomConstraint.constant = test
+                tableView.contentOffset = CGPoint(x: 0, y: tableView.contentOffset.y-test)
             } else {
                 let intersection = frame.intersection(self.view.frame)
                 self.bottomConstraint.constant = -intersection.height
@@ -75,6 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         userMessages = userMessage.findMessage()
         tableView.reloadData()
         textField.text = nil
+        textField.endEditing(true)
         resetTableViewContentOffset()
         return true
     }
@@ -157,7 +160,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func resetTableViewContentOffset() {
-        tableView.contentOffset.y = tableView.contentSize.height - tableView.bounds.height
+        tableView.scrollToRow(at: IndexPath(row: userMessages.count - 1, section: 0), at: .bottom, animated: true)
     }
 }
 
