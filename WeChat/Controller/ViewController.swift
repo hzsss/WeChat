@@ -31,40 +31,43 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 0)
         tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         tableView.register(UINib.init(nibName: "TalkCell", bundle: nil), forCellReuseIdentifier: "TalkCell")
         tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        resetTableViewContentOffset(animated: false)
+    }
+    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     @objc func keyboardWillChange(_ notification: Notification) {
-        if let userInfo = notification.userInfo,
+        guard let userInfo = notification.userInfo,
             let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
             let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt {
+            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else { return }
             
-            let frame = value.cgRectValue
-            
-            if #available(iOS 11.0, *) {
-                let intersection = self.view.safeAreaInsets
-                var test = -(frame.intersection(self.view.frame).height - intersection.bottom)
-                if test > 0 {
-                    test = 0
-                }
-                self.bottomConstraint.constant = test
-                tableView.contentOffset = CGPoint(x: 0, y: tableView.contentOffset.y-test)
-            } else {
-                let intersection = frame.intersection(self.view.frame)
-                self.bottomConstraint.constant = -intersection.height
+        let frame = value.cgRectValue
+        
+        if #available(iOS 11.0, *) {
+            let intersection = view.safeAreaInsets
+            var bottom = -(frame.intersection(view.frame).height - intersection.bottom)
+            if bottom > 0 {
+                bottom = 0
             }
-            
-            UIView.animate(withDuration: duration, delay: 0.0,options: UIView.AnimationOptions(rawValue: curve), animations: {
-                self.view.layoutIfNeeded()
-            },completion: nil)
+            bottomConstraint.constant = bottom
+            tableView.contentOffset = CGPoint(x: 0, y: tableView.contentOffset.y-bottom)
+        } else {
+            let intersection = frame.intersection(view.frame)
+            bottomConstraint.constant = -intersection.height
         }
+        
+        UIView.animate(withDuration: duration, delay: 0.0,options: UIView.AnimationOptions(rawValue: curve), animations: {
+            self.view.layoutIfNeeded()
+        },completion: nil)
     }
     
     // UITextFieldDelegate
@@ -78,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.reloadData()
         textField.text = nil
         textField.endEditing(true)
-        resetTableViewContentOffset()
+        resetTableViewContentOffset(animated: true)
         return true
     }
     
@@ -124,7 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         print("identifier: \(userMessage.lastInsertedRowID))")
         
         tableView.reloadData()
-        resetTableViewContentOffset()
+        resetTableViewContentOffset(animated: false)
     }
     
     @IBAction func deleteAllMessage(_ sender: Any) {
@@ -151,7 +154,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             userMessage.insertMessage(userMessage)
             self.userMessages = userMessage.findMessage()
             self.tableView.reloadData()
-            self.resetTableViewContentOffset()
+            self.resetTableViewContentOffset(animated: true)
         }
     }
     
@@ -159,8 +162,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    func resetTableViewContentOffset() {
-        tableView.scrollToRow(at: IndexPath(row: userMessages.count - 1, section: 0), at: .bottom, animated: true)
+    func resetTableViewContentOffset(animated: Bool) {
+        tableView.scrollToRow(at: IndexPath(row: userMessages.count - 1, section: 0), at: .bottom, animated: animated)
     }
 }
 
