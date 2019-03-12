@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 0)
         tableView.register(UINib.init(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         tableView.register(UINib.init(nibName: "TalkCell", bundle: nil), forCellReuseIdentifier: "TalkCell")
+        tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
         tableView.tableFooterView = UIView(frame: .zero)
         
         userMessages = UserMessage().findMessage()
@@ -83,8 +84,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             cell.userMessage = userMessages[indexPath.row]
             cell.selectionStyle = .none
             return cell
-        } else {
+        } else if userMessages[indexPath.row].name == "Linder" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TalkCell") as! TalkCell
+            cell.userMessage = userMessages[indexPath.row]
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
             cell.userMessage = userMessages[indexPath.row]
             cell.selectionStyle = .none
             return cell
@@ -128,10 +134,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true) {
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            let imageView = UIImageView()
-            imageView.image = image
-            imageView.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
-            self.view.addSubview(imageView)
+            let imageData = image?.pngData()
+            let userMessage = UserMessage()
+            userMessage.imageData = imageData
+            userMessage.insertMessage(userMessage)
+            self.userMessages = userMessage.findMessage()
+            self.tableView.reloadData()
         }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

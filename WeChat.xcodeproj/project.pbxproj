@@ -19,6 +19,8 @@
 		3EB45E6422324E4E001F9224 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB45E6222324E4E001F9224 /* LaunchScreen.storyboard */; };
 		3EB45E6F22324E4E001F9224 /* WeChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E6E22324E4E001F9224 /* WeChatTests.swift */; };
 		3EB45E7A22324E4E001F9224 /* WeChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB45E7922324E4E001F9224 /* WeChatUITests.swift */; };
+		3EC6CBA822374E8A00659D44 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6CBA622374E8A00659D44 /* ImageCell.swift */; };
+		3EC6CBA922374E8A00659D44 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EC6CBA722374E8A00659D44 /* ImageCell.xib */; };
 		C439FC4F98D92CB92D368CD4 /* Pods_WeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B1C47BCAA183BEF6F853BD /* Pods_WeChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		3EB45E7522324E4E001F9224 /* WeChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB45E7922324E4E001F9224 /* WeChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChatUITests.swift; sourceTree = "<group>"; };
 		3EB45E7B22324E4E001F9224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EC6CBA622374E8A00659D44 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		3EC6CBA722374E8A00659D44 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				3E1DC07222360996002CA272 /* ChatCell.xib */,
 				3E1DC07522365970002CA272 /* TalkCell.swift */,
 				3E1DC07622365970002CA272 /* TalkCell.xib */,
+				3EC6CBA622374E8A00659D44 /* ImageCell.swift */,
+				3EC6CBA722374E8A00659D44 /* ImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				3EB45E6422324E4E001F9224 /* LaunchScreen.storyboard in Resources */,
 				3E1DC07422360996002CA272 /* ChatCell.xib in Resources */,
 				3E1DC07822365970002CA272 /* TalkCell.xib in Resources */,
+				3EC6CBA922374E8A00659D44 /* ImageCell.xib in Resources */,
 				3EB45E6122324E4E001F9224 /* Assets.xcassets in Resources */,
 				3EB45E5F22324E4D001F9224 /* Main.storyboard in Resources */,
 			);
@@ -379,6 +386,7 @@
 				3EB45E5C22324E4D001F9224 /* ViewController.swift in Sources */,
 				3EB45E5A22324E4D001F9224 /* AppDelegate.swift in Sources */,
 				3E1DC07722365970002CA272 /* TalkCell.swift in Sources */,
+				3EC6CBA822374E8A00659D44 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

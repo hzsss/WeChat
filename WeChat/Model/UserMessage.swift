@@ -15,6 +15,7 @@ class UserMessage: TableCodable {
     var identifier: Int?
     var name: String?
     var text: String?
+    var imageData: Data?
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = UserMessage
@@ -22,6 +23,7 @@ class UserMessage: TableCodable {
         case identifier
         case name
         case text
+        case imageData
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
             return [
