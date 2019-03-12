@@ -123,9 +123,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         userMessage.text = "你好！!"
         userMessage.insertMessage(userMessage)
         userMessages = userMessage.findMessage()
-        
-        print("identifier: \(userMessage.lastInsertedRowID))")
-        
         tableView.reloadData()
         resetTableViewContentOffset(animated: false)
     }
@@ -163,7 +160,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func resetTableViewContentOffset(animated: Bool) {
-        tableView.scrollToRow(at: IndexPath(row: userMessages.count - 1, section: 0), at: .bottom, animated: animated)
+        if userMessages.count - 1 > 0 {
+            tableView.scrollToRow(at: IndexPath(row: userMessages.count - 1, section: 0), at: .bottom, animated: animated)
+        }
     }
 }
 
