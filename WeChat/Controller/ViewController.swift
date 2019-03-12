@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Photos
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -115,6 +116,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         userMessage.deleteMessage()
         userMessages = userMessage.findMessage()
         tableView.reloadData()
+    }
+    
+    // 发送图片
+    @IBAction func sendImageMessage(_ sender: Any) {
+        let imageVc = UIImagePickerController()
+        imageVc.sourceType = .photoLibrary
+        imageVc.delegate = self
+        self.present(imageVc, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) {
+            let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            let imageView = UIImageView()
+            imageView.image = image
+            imageView.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+            self.view.addSubview(imageView)
+        }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
