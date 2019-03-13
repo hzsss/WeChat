@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var userMessages: [UserMessage] = []
+    var heightDic: [IndexPath : CGFloat] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,7 +111,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        guard let height = heightDic[indexPath] else {
+            return 150
+        }
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        heightDic[indexPath] = cell.bounds.height
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
